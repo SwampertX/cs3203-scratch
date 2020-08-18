@@ -9,15 +9,10 @@ on:
 jobs:
   build:
 
-    runs-on: fedora-30
-
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: configure
-      run: ./configure
+      run: mkdir -p Team12/src/build && cd Team12/src/build && cmake ..
     - name: make
-      run: make
-    - name: make check
-      run: make check
-    - name: make distcheck
-      run: make distcheck
+      run: make -j2
